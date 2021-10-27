@@ -6,6 +6,18 @@ const makeTheme = (): Theme => {
             background: {
                 default: '#0e1212',
             },
+            text: {
+                primary: "#FFFFFF"
+            }
+        },
+        typography: {
+            fontFamily: [
+                '"Roboto Mono"',
+                'Roboto',
+            ].join(','),
+            subtitle1: {
+                color: "gray"
+            }
         }
     });
 };
