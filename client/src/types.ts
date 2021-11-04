@@ -5,6 +5,12 @@ export interface IMenuOptionsStoreProps {
     store: MenuOptionsStore;
 }
 
+export interface ILanguageProps {
+    name?: string,
+    percentage?: number
+}
+
+
 
 
 

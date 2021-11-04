@@ -1,13 +1,31 @@
 import * as React from 'react';
-import { Typography } from '@mui/material';
+import { Box, Typography } from '@mui/material';
 
 
 class ProjectsText extends React.Component<{}> {
     public render() {
         return (
-            <Typography>
-                Projects
-            </Typography>
+            <>
+                <Box>
+                    <Typography variant="subtitle1">
+                    // Highlighed recent projects
+                    </Typography>
+                </Box>
+                <br />
+                <b> BasicCoin </b>
+                <Typography style={{ color: "#00adb5" }}>  <b>Blockchain technology</b> </Typography>
+                <Typography variant="subtitle1"> Feb 2021 – Apr 2021 </Typography>
+
+                <br />
+                <b> Binary Clock </b>
+                <Typography style={{ color: "#00adb5" }}>  <b>Garmin WatchFace</b> </Typography>
+                <Typography variant="subtitle1"> Jan 2021 - Feb 2021 </Typography>
+
+                <br />
+                <b> Vicinity Alarm Clock </b>
+                <Typography style={{ color: "#00adb5" }}>  <b>Smart Home automation</b> </Typography>
+                <Typography variant="subtitle1"> Feb 2020 – Mar 2020 </Typography>
+            </>
         );
     }
 }
