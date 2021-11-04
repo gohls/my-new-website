@@ -18,7 +18,7 @@ const makeTheme = (): Theme => {
             subtitle1: {
                 color: "gray"
             }
-        }
+        },
     });
 };
 
