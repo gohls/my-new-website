@@ -1,12 +1,14 @@
 import * as React from 'react';
 import { Box, Grid, Typography } from '@mui/material';
 import LanguageChart from './LanguageChart';
+import { IMenuOptionsStoreProps } from '../types';
 
 
 
 
-class SkillsText extends React.Component<{}> {
+class SkillsText extends React.Component<IMenuOptionsStoreProps, {}> {
     public render() {
+        const { reducedRepoLanguageData, sum } = this.props.store;
         return (
             <Grid container>
                 <Grid item xs={6} >
@@ -43,11 +45,16 @@ class SkillsText extends React.Component<{}> {
                     <Box>
                         <br />
                         <Typography variant="subtitle1">
-                            // My GitHub most used languages
+                            // My GitHub used languages breakdown
                         </Typography>
                         <br />
                         <Box sx={{ width: '100%' }}>
-                            <LanguageChart />
+                            {Object.keys(reducedRepoLanguageData).map((languageName, idx) => (
+                                <LanguageChart
+                                    language={languageName}
+                                    size={reducedRepoLanguageData[languageName]}
+                                    sum={sum} />
+                            ))}
                         </Box>
                     </Box>
                     <br />
@@ -58,3 +65,10 @@ class SkillsText extends React.Component<{}> {
 }
 
 export default SkillsText;
+
+
+// store.reducedRepoLanguageData.map(()) => <LanguageChart store={store} />
+
+// <li className="travelcompany-input" key={idx}>
+// <span className="input-label">key: {idx} Name: {store.reducedRepoLanguageData[languageName]}</span>
+// </li>

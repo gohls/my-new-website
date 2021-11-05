@@ -18,6 +18,9 @@ import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import { computed, observable } from "mobx";
 import { observer } from "mobx-react";
 
+// Other //
+import { isMobile } from 'react-device-detect';
+
 // CSS Gobal Theme //
 import makeTheme from "./theme";
 import TopAppBar from "./AppBar";
@@ -50,13 +53,13 @@ class Root extends React.Component<{}> {
 
     switch (option) {
       case MENU_OPTIONS.EXPERIENCE:
-        return <ExperienceText />;
+        return <ExperienceText store={this.menuOptionsStore} />;
       case MENU_OPTIONS.PROJECTS:
-        return <ProjectsText />;
+        return <ProjectsText store={this.menuOptionsStore} />;
       case MENU_OPTIONS.SKILLS:
-        return <SkillsText />;
+        return <SkillsText store={this.menuOptionsStore} />;
       case MENU_OPTIONS.ABOUT_ME:
-        return <AboutMeText />;
+        return <AboutMeText store={this.menuOptionsStore} />;
       default:
         throw new Error("Undefined menu option.");
     }
@@ -64,19 +67,19 @@ class Root extends React.Component<{}> {
 
   public render() {
     const theme: Theme = makeTheme();
-
+    console.log(isMobile)
     return (
       <ThemeProvider theme={theme}>
         <CssBaseline />
 
         <Grid container>
-          <Grid item xs={4} />
-          <Grid item xs={4}>
+          {isMobile ? null : <Grid item xs={4} />}
+          <Grid item xs={isMobile ? 12 : 4} >
             <Grid container >
               <Grid item xs={6}>
                 <Box
                   justifyContent="flex-end"
-                  mt={3}
+                  mt={3} mr={3}
                 >
                   <div id="me">
                     <img src={process.env.PUBLIC_URL + '/img/blade_runner_unicorn.jpg'} />
@@ -117,7 +120,7 @@ class Root extends React.Component<{}> {
                 </Box>
               </Grid>
             </Grid>
-            <Box mt={3} ml={3} mb={1}>
+            <Box mt={3} ml={3} mr={3} mb={1} >
               <Typography variant="h3">
                 Hi, I'm Simon
               </Typography>
@@ -133,7 +136,7 @@ class Root extends React.Component<{}> {
               </Typography>
             </Box>
           </Grid>
-          <Grid item xs={4} />
+          {isMobile ? null : <Grid item xs={4} />}
         </Grid >
       </ThemeProvider >
     );

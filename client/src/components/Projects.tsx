@@ -1,8 +1,9 @@
 import * as React from 'react';
 import { Box, Typography } from '@mui/material';
+import { IMenuOptionsStoreProps } from '../types';
 
 
-class ProjectsText extends React.Component<{}> {
+class ProjectsText extends React.Component<IMenuOptionsStoreProps, {}> {
     public render() {
         return (
             <>

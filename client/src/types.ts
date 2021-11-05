@@ -6,11 +6,18 @@ export interface IMenuOptionsStoreProps {
 }
 
 export interface ILanguageProps {
-    name?: string,
-    percentage?: number
+    language: string,
+    size: number,
+    sum: number
 }
 
+export type TRepoLanguages = {
+    [key: string]: number
+}
 
+export type TGitHubLangaugeData = {
+    [key: string]: number
+}
 
 
 
