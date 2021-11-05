@@ -1,19 +1,15 @@
 import axios from "axios";
 import { action, computed, makeAutoObservable } from "mobx";
 import { MENU_OPTIONS } from "../enums";
-import { ILanguageProps } from "../types";
-
-
-interface IRepoLanguages {
-    [key: string]: number
-}
+import { TRepoLanguages, TGitHubLangaugeData } from "../types";
 
 
 export class MenuOptionsStore {
     public option: MENU_OPTIONS = MENU_OPTIONS.EXPERIENCE;
     public repoNames: Array<string> = [];
-    public repoLanguages: IRepoLanguages[] = [];
-    public reducedRepoLanguageData: Object = {};
+    public repoLanguages: TRepoLanguages[] = [];
+    public reducedRepoLanguageData: TGitHubLangaugeData = {};
+    public sum: number = 0;
 
     constructor() {
         makeAutoObservable(this);
@@ -23,18 +19,20 @@ export class MenuOptionsStore {
     public async init(): Promise<void> {
         // Get GitHub data
         await this.getGitHubRepoNames();
-        await this.getGitHubRepoLanguages();
-
+        await this.getGitHubRepoLanguageData();
+        debugger
         // Combine languages and sum size 
         this.reduceGitHubLanguageData();
 
+        // Calc size sum of all languages
+        this.calcLanguagesSizeSum()
     }
 
     public async getGitHubRepoNames(): Promise<void> {
         await axios.get(`https://api.github.com/users/gohls/repos?per_page=30`)
             .then(action(res => {
                 res.data.forEach((repo: any) => {
-                    // This repo skews the data
+                    // This repo skews the data (because of included libs)
                     // @TODO fix by adding some gitignore rules to the repo
                     if (repo.name !== 'vicinity-alarm-clock') {
                         this.repoNames.push(repo.name);
@@ -46,7 +44,7 @@ export class MenuOptionsStore {
             }));
     }
 
-    public async getGitHubRepoLanguages(): Promise<void> {
+    public async getGitHubRepoLanguageData(): Promise<void> {
         await axios.all(this.repoNames.map((name => {
             return axios.get(`https://api.github.com/repos/gohls/${name}/languages`);
         }))).then(action(res => {
@@ -61,13 +59,16 @@ export class MenuOptionsStore {
 
     @action
     public reduceGitHubLanguageData(): void {
-        this.reducedRepoLanguageData = this.repoLanguages.reduce((acc, curr) => {
-            for (const lang in curr) {
-                if (lang in acc) acc[lang] += curr[lang];
-                else acc[lang] = curr[lang];
+        this.reducedRepoLanguageData = this.repoLanguages.reduce((repos, repo) => {
+            for (const language in repo) {
+                if (language in repos) {
+                    repos[language] += repo[language];
+                } else {
+                    repos[language] = repo[language];
+                }
             }
-            return acc;
-        });
+            return repos;
+        }, {});
     }
 
     @action
@@ -75,11 +76,16 @@ export class MenuOptionsStore {
         this.option = selectedOption;
     }
 
-    // @computed
-    // public get languagePercentages(): ILanguageProps {
-    //     let sum: number = 0;
-    //     this.reduceGitHubLanguageData.
-    // }
+    @action
+    public calcLanguagesSizeSum() {
+        debugger
+        const langData = this.reducedRepoLanguageData;
+        for (const property in langData) {
+            this.sum += langData[property];
+        }
+        return this.sum;
+    }
+
 }
 
 export default MenuOptionsStore;

@@ -1,8 +1,9 @@
 import * as React from 'react';
 import { Typography } from '@mui/material';
+import { IMenuOptionsStoreProps } from '../types';
 
 
-class AboutMeText extends React.Component<{}> {
+class AboutMeText extends React.Component<IMenuOptionsStoreProps, {}> {
     public render() {
         return (
             <Typography>
