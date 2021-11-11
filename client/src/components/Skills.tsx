@@ -14,7 +14,7 @@ class SkillsText extends React.Component<IMenuOptionsStoreProps, {}> {
                 <Grid item xs={6} >
                     <Box>
                         <Typography variant="subtitle1">
-                            // Languages/years
+                            // Lang/years
                         </Typography>
                     </Box>
                     <br />
