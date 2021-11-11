@@ -20,7 +20,7 @@ export class MenuOptionsStore {
         // Get GitHub data
         await this.getGitHubRepoNames();
         await this.getGitHubRepoLanguageData();
-        debugger
+
         // Combine languages and sum size 
         this.reduceGitHubLanguageData();
 
@@ -78,7 +78,6 @@ export class MenuOptionsStore {
 
     @action
     public calcLanguagesSizeSum() {
-        debugger
         const langData = this.reducedRepoLanguageData;
         for (const property in langData) {
             this.sum += langData[property];
