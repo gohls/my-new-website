@@ -34,7 +34,7 @@ import ProjectsText from "./components/Projects";
 import SkillsText from "./components/Skills";
 import AboutMeText from "./components/AboutMe";
 
-// Types/Enums/API //
+// Enums //
 import { MENU_OPTIONS } from "./enums";
 
 
@@ -71,6 +71,7 @@ class Root extends React.Component<{}> {
     return (
       <ThemeProvider theme={theme}>
         <CssBaseline />
+        {/* <Router history={stores.router.history}> */}
         <Grid container>
           {isMobile ? null : <Grid item xs={4} />}
           <Grid item xs={isMobile ? 12 : 4} >
@@ -78,7 +79,7 @@ class Root extends React.Component<{}> {
               <Grid item xs={6} >
                 <Box mt={3} mr={3} >
                   <div id="me">
-                    <img src={process.env.PUBLIC_URL + '/img/blade_runner_unicorn.jpg'} />
+                    <img src={process.env.PUBLIC_URL + '/img/me.jpg'} />
                   </div>
                 </Box>
               </Grid>
@@ -134,6 +135,7 @@ class Root extends React.Component<{}> {
           </Grid>
           {isMobile ? null : <Grid item xs={4} />}
         </Grid >
+        {/* </Router> */}
       </ThemeProvider >
     );
   }
