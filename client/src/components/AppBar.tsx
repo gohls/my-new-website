@@ -4,10 +4,11 @@ import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import Button from '@mui/material/Button';
-import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 
-import { IMenuOptionsStoreProps } from './types';
-import { MENU_OPTIONS } from './enums';
+import { Link } from "react-router-dom";
+
+import { IMenuOptionsStoreProps } from '../types';
+import { MENU_OPTIONS } from '../enums';
 
 
 @observer
@@ -42,28 +43,36 @@ class TopAppBar extends React.Component<IMenuOptionsStoreProps, {}> {
                             id="experience"
                             style={{ color: ((store.option === MENU_OPTIONS.EXPERIENCE) ? "#00adb5" : 'inherit') }}
                             onClick={this.handleClick}>
-                            Experience
+                            <Link to="/experience" style={{ color: 'inherit', textDecoration: 'inherit' }}>
+                                Experience
+                            </Link>
                         </Button>
                         <Button
                             // color="inherit"
                             id="projects"
                             style={{ color: ((store.option === MENU_OPTIONS.PROJECTS) ? "#00adb5" : 'inherit') }}
                             onClick={this.handleClick}>
-                            Projects
+                            <Link to="/projects" style={{ color: 'inherit', textDecoration: 'inherit' }}>
+                                Projects
+                            </Link>
                         </Button>
                         <Button
                             // color="inherit"
                             id="skills"
                             style={{ color: ((store.option === MENU_OPTIONS.SKILLS) ? "#00adb5" : 'inherit') }}
                             onClick={this.handleClick}>
-                            Skills
+                            <Link to="/skills" style={{ color: 'inherit', textDecoration: 'inherit' }}>
+                                Skills
+                            </Link>
                         </Button>
                         <Button
                             // color="inherit"
                             id="about_me"
                             style={{ color: ((store.option === MENU_OPTIONS.ABOUT_ME) ? "#00adb5" : 'inherit') }}
                             onClick={this.handleClick}>
-                            About Me
+                            <Link to="/about-me" style={{ color: 'inherit', textDecoration: 'inherit' }}>
+                                About Me
+                            </Link>
                         </Button>
                     </Toolbar>
                 </AppBar>

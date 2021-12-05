@@ -1,9 +1,7 @@
 import * as React from 'react';
 import { Box, Grid, Typography } from '@mui/material';
-import LanguageChart from './LanguageChart';
-import { IMenuOptionsStoreProps } from '../types';
-
-
+import LanguageChart from '../LanguageChart';
+import { IMenuOptionsStoreProps } from '../../types';
 
 
 class SkillsText extends React.Component<IMenuOptionsStoreProps, {}> {

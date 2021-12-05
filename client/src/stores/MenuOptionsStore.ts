@@ -1,5 +1,5 @@
 import axios from "axios";
-import { action, computed, makeAutoObservable } from "mobx";
+import { action, makeAutoObservable } from "mobx";
 import { MENU_OPTIONS } from "../enums";
 import { TRepoLanguages, TGitHubLangaugeData } from "../types";
 
@@ -86,6 +86,3 @@ export class MenuOptionsStore {
     }
 
 }
-
-export default MenuOptionsStore;
-
