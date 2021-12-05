@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Box, Typography } from '@mui/material';
-import { IMenuOptionsStoreProps } from '../types';
+import { IMenuOptionsStoreProps } from '../../types';
 
 
 class ExperienceText extends React.Component<IMenuOptionsStoreProps, {}> {
@@ -26,7 +26,6 @@ class ExperienceText extends React.Component<IMenuOptionsStoreProps, {}> {
                 <Typography style={{ color: "#00adb5" }}>  <b>Digital Information Associate </b> </Typography>
                 <b> @ St. Edward's University</b>
                 <Typography variant="subtitle1"> May 2018 – May 2019 </Typography>
-
             </>
         );
     }

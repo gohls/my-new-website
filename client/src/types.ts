@@ -1,4 +1,4 @@
-import MenuOptionsStore from "./stores/MenuOptionsStore";
+import { MenuOptionsStore } from "./stores/MenuOptionsStore";
 
 
 export interface IMenuOptionsStoreProps {
