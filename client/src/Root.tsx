@@ -63,26 +63,23 @@ class Root extends React.Component<{}> {
             {isMobile ? null : <Grid item xs={4} />}
             <Grid item xs={isMobile ? 12 : 4} >
               <Grid container >
-                <Grid item xs={6} >
-                  <Box mt={3} mr={3} >
-                    <div id="me">
-                      <img src={process.env.PUBLIC_URL + '/img/me.jpg'} />
-                    </div>
-                  </Box>
-                </Grid>
-                <Grid item xs={6}>
-                  <Box mt={3} mr={3}>
-                    <Box mb={1} mr={3}>
-                      <Typography variant="subtitle1">
-                            // Links
-                      </Typography>
-                    </Box>
+
+                <Grid item xs={12}>
+                  <Box mt={3} ml={3} mr={3} >
+                    {/* <Box mb={1} mr={3}> */}
+
+                    {/* </Box> */}
                     <Grid
                       container
                       direction="row"
                       justifyContent="bottom"
                       alignItems="center"
                       spacing={2}>
+                      <Grid item>
+                        <Typography variant="subtitle1">
+                            // Links
+                        </Typography>
+                      </Grid>
                       <Grid item>
                         <Link href="https://github.com/gohls" target="_blank" rel="noreferrer">
                           <GitHubIcon style={{ fontSize: 38, color: "#00adb5" }} />
